@@ -1,1 +1,1 @@
-/home/commanderxa/projects/rust/rust_book_learn/fibonacci_nums/target/debug/fibonacci_nums: /home/commanderxa/projects/rust/rust_book_learn/fibonacci_nums/src/main.rs
+/root/projects/rust/fibonacci_nums/target/debug/fibonacci_nums: /root/projects/rust/fibonacci_nums/src/main.rs

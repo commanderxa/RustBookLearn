@@ -1,17 +1,21 @@
 use std::io;
 
 fn main() {
-    println!("Whick n-th element of Fibonacci do you want?:");
+    loop {
+        println!("Which n-th element of Fibonacci do you want?:");
 
-    let mut n = String::new();
-    io::stdin().read_line(&mut n).expect("Can't read line.");
+        let mut n = String::new();
 
-    let n: i32 = match n.trim().parse() {
-        Ok(num) => num,
-        Err(_) => 0,
-    };
+        io::stdin().read_line(&mut n).expect("Can't read line.");
+        if n.as_bytes()[0] == b'q' { break } 
 
-    println!("{}", fibonacci_num(n));
+        let n: i32 = match n.trim().parse() {
+            Ok(num) => num,
+            Err(_) => 0,
+        };
+
+        println!("{}", fibonacci_num(n));
+    }
 }
 
 fn fibonacci_num(n: i32) -> f64 {
