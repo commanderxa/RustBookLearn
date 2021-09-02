@@ -12,7 +12,7 @@ pub fn largest_i32(list: &[i32]) -> i32 {
 
 // This function can take a list of any type
 
-pub fn largest<T>(list: &[T]) -> T {
+pub fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
     let mut largest = list[0];
 
     for &item in list {
@@ -24,9 +24,19 @@ pub fn largest<T>(list: &[T]) -> T {
     largest
 }
 
+pub fn largest_v2<T: std::cmp::PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+    for i in 0..list.len() {
+        if &list[i] > largest {
+            largest = &list[i]
+        }
+    }
+    return largest;
+}
+
 pub struct PointOld<T> {
-    x: T,
-    y: T,
+    pub x: T,
+    pub y: T,
 }
 
 impl<T> PointOld<T> {
@@ -52,7 +62,7 @@ pub struct Point<T, U> {
     pub y: U,
 }
 
-impl<T, U> Point<T, U> {
+impl<T: Copy, U> Point<T, U> {
     pub fn mixup<V, W>(&self, other: Point<V, W>) -> Point<T, W> {
         Point {
             x: self.x,
